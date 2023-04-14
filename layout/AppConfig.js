@@ -23,28 +23,13 @@ const AppConfig = (props) => {
         setLayoutConfig((prevState) => ({ ...prevState, inputStyle: e.value }));
     };
 
-    const changeRipple = (e) => {
-        PrimeReact.ripple = e.value;
-        setLayoutConfig((prevState) => ({ ...prevState, ripple: e.value }));
-    };
 
     const changeMenuMode = (e) => {
         setLayoutConfig((prevState) => ({ ...prevState, menuMode: e.value }));
     };
 
-    const changeTheme = (theme, colorScheme) => {
-        PrimeReact.changeTheme(layoutConfig.theme, theme, 'theme-css', () => {
-            setLayoutConfig((prevState) => ({ ...prevState, theme, colorScheme }));
-        });
-    };
 
-    const decrementScale = () => {
-        setLayoutConfig((prevState) => ({ ...prevState, scale: prevState.scale - 1 }));
-    };
-
-    const incrementScale = () => {
-        setLayoutConfig((prevState) => ({ ...prevState, scale: prevState.scale + 1 }));
-    };
+  
 
     const applyScale = () => {
         document.documentElement.style.fontSize = layoutConfig.scale + 'px';
