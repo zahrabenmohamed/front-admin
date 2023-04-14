@@ -36,7 +36,7 @@ const Crud = () => {
     const dt = useRef(null);
 
     useEffect(() => {
-        //ProductService.getProducts().then((data) => setProducts(data));
+        ProductService.getProducts().then((data) => setProducts(data));
     }, []);
 
 
@@ -254,9 +254,9 @@ const Crud = () => {
                         emptyMessage="No parameters added."
                         header={header}
                         responsiveLayout="scroll"
-                    >
-                        <Column field="name" header="Name"  body={codeBodyTemplate} headerStyle={{ minWidth: '15rem' }}></Column>
-                        <Column field="description" header="Description"  body={nameBodyTemplate} headerStyle={{ minWidth: '15rem' }}></Column>
+                    >   
+                        <Column field="name" header="Name"  body={nameBodyTemplate} headerStyle={{ minWidth: '15rem' }}></Column>
+                        <Column field="description" header="Description"  body={codeBodyTemplate} headerStyle={{ minWidth: '15rem' }}></Column>
                         <Column field="selector" header="Selector" body={priceBodyTemplate} ></Column>
                         <Column field="selectorType" header="Selector Type" body={categoryBodyTemplate} headerStyle={{ minWidth: '10rem' }}></Column>
                         <Column field="source" header="Source" body={categoryBodyTemplate} headerStyle={{ minWidth: '10rem' }}></Column>
