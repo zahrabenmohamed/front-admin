@@ -13,7 +13,7 @@ import { ProductService } from '../../../demo/service/ProductService';
 import { Dropdown } from 'primereact/dropdown';
 
 
-const Crud = () => {
+const Generator = () => {
     let emptyProduct = {
         id: null,
         name: '',
@@ -327,4 +327,4 @@ const Crud = () => {
     );
 };
 
-export default Crud;
+export default Generator;

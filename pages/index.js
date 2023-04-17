@@ -12,17 +12,9 @@ const Dashboard = () => {
         const Piedata = {
             labels: ['Email', 'GED', 'FTP', 'Email with PJ'],
             datasets: [
+               
                 {
-                    label: 'My First dataset',
-                    borderColor: documentStyle.getPropertyValue('--bluegray-400'),
-                    pointBackgroundColor: documentStyle.getPropertyValue('--bluegray-400'),
-                    pointBorderColor: documentStyle.getPropertyValue('--bluegray-400'),
-                    pointHoverBackgroundColor: textColor,
-                    pointHoverBorderColor: documentStyle.getPropertyValue('--bluegray-400'),
-                    data: [65, 59, 90, 81, 56, 55, 40]
-                },
-                {
-                    label: 'My Second dataset',
+                    label: 'Documents',
                     borderColor: documentStyle.getPropertyValue('--pink-400'),
                     pointBackgroundColor: documentStyle.getPropertyValue('--pink-400'),
                     pointBorderColor: documentStyle.getPropertyValue('--pink-400'),
@@ -33,7 +25,7 @@ const Dashboard = () => {
             ]
         };
         const data = {
-            labels: ['A', 'B', 'C'],
+            labels: ['Invoice', 'Payment Receipt', 'Monthly Report'],
             datasets: [
                 {
                     data: [540, 325, 702],
