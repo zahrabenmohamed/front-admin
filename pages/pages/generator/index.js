@@ -16,10 +16,12 @@ const AddParameters = () => {
   const [formData, setFormData] = useState({}); // state for storing form data in the dialog
 
   const header = (
+
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
       <h5 className="m-0">Add Parameters</h5>
       <Button
         label="New"
+        type="button"
         icon="pi pi-plus"
         severity="success"
         className="mr-2"
@@ -27,15 +29,22 @@ const AddParameters = () => {
           setFormData({}); // clear the form data
           setDialogVisible(true); // show the dialog
         }}
+        
       />
     </div>
   );
 
   const leftToolbarTemplate = () => {
+    const templateTypes = [
+        { label: 'Yarg', value: 'yarg' },
+        { label: 'Jasper', value: 'jasper' },
+        { label: 'Freemarker', value: 'freemarker' }
+    ];
+
     return (
             <div className="my-2">
                 <InputText id="code" className="mr-2" placeholder="Template Name"/>
-                <Dropdown  placeholder="Select template type" className="mr-2" />
+                <Dropdown  options={templateTypes} placeholder="Select template type" className="mr-2" />
             </div>
         
     );
@@ -60,11 +69,16 @@ const rightToolbarTemplate = () => {
   return (
     <div className="grid crud-demo">
         <div className="col-12">
+        <div className="card">
+
         <Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
         <DataTable
         value={parameters}
+        className="datatable-responsive"
         emptyMessage="No parameters added"
         header={header}
+        responsiveLayout="scroll"
+
         >
         <Column field="name" header="Name" />
         <Column field="description" header="Description" />
@@ -82,21 +96,21 @@ const rightToolbarTemplate = () => {
       onHide={() => setDialogVisible(false)}
       header="Add Parameter"
       >
-      <div className="p-grid p-fluid">
-      <div className="p-col-4">
-      <label htmlFor="name">Name</label>
-    </div>
-    <div className="p-col-8">
+    <div className="p-grid p-fluid">
+        <div className="p-col-4">
+        <label htmlFor="name">Name</label>
+        </div>
+      <div className="p-col-8">
       <InputText
         id="name"
         value={formData.name || ""}
         onChange={(e) =>
-          setFormData({ ...formData, name: e.target.value })
+        setFormData({ ...formData, name: e.target.value })
         }
       />
     </div>
-  </div>
-  <div className="p-grid p-fluid">
+    </div>
+    <div className="p-grid p-fluid">
     <div className="p-col-4">
       <label htmlFor="selector">Selector</label>
     </div>
@@ -187,7 +201,8 @@ const rightToolbarTemplate = () => {
       className="p-button-success"
     />
   </div>
-      </Dialog>
+    </Dialog>
+    </div>
 
     </div>
   );
