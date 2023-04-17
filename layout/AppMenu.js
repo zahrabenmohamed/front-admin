@@ -46,7 +46,7 @@ const AppMenu = () => {
                 {
                     label: 'Template Generator',
                     icon: 'pi pi-fw pi-pencil',
-                    to: '/pages/crud'
+                    to: '/pages/generator'
                 },
             ]
         },
