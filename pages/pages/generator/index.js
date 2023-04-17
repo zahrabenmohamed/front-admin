@@ -15,6 +15,8 @@ const AddParameters = () => {
   const [dialogVisible, setDialogVisible] = useState(false); // state for showing/hiding the dialog
   const [formData, setFormData] = useState({}); // state for storing form data in the dialog
 
+
+
   const header = (
 
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
@@ -65,6 +67,15 @@ const rightToolbarTemplate = () => {
     setFormData({}); // clear the form data
     setDialogVisible(false); // hide the dialog
   };
+  
+  
+  const parameterDialogFooter = (
+    <>
+        <Button label="Cancel" icon="pi pi-times" text  onClick={() => setDialogVisible(false)}
+/>
+        <Button label="Save" icon="pi pi-check" text onClick={handleAddParameter}/>
+    </>
+);
 
   return (
     <div className="grid crud-demo">
@@ -93,9 +104,12 @@ const rightToolbarTemplate = () => {
    
     <Dialog
       visible={dialogVisible}
+      style={{ width: '450px' }}
       onHide={() => setDialogVisible(false)}
       header="Add Parameter"
+      footer={parameterDialogFooter}
       >
+
     <div className="p-grid p-fluid">
         <div className="p-col-4">
         <label htmlFor="name">Name</label>
@@ -107,6 +121,8 @@ const rightToolbarTemplate = () => {
         onChange={(e) =>
         setFormData({ ...formData, name: e.target.value })
         }
+        required
+
       />
     </div>
     </div>
@@ -121,6 +137,7 @@ const rightToolbarTemplate = () => {
         onChange={(e) =>
           setFormData({ ...formData, selector: e.target.value })
         }
+        required
       />
     </div>
   </div>
@@ -188,18 +205,6 @@ const rightToolbarTemplate = () => {
         }
       />
     </div>
-  </div>
-  <div className="p-dialog-footer">
-    <Button
-      label="Cancel"
-      onClick={() => setDialogVisible(false)}
-      className="p-button-text"
-    />
-    <Button
-      label="Add"
-      onClick={handleAddParameter}
-      className="p-button-success"
-    />
   </div>
     </Dialog>
     </div>
