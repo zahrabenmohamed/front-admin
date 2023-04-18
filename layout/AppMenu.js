@@ -28,6 +28,11 @@ const AppMenu = () => {
                     icon: 'pi pi-fw pi-pencil',
                     to: '/pages/generator'
                 },
+                {
+                    label: 'Templates',
+                    icon: 'pi pi-fw pi-pencil',
+                    to: '/pages/templates'
+                },
             ]
         },
 
