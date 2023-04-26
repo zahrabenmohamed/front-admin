@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { StyleClass } from 'primereact/styleclass';
 import { Button } from 'primereact/button';
 import { Ripple } from 'primereact/ripple';
-import AppConfig from '../../layout/AppConfig';
 import { LayoutContext } from '../../layout/context/layoutcontext';
 import { classNames } from 'primereact/utils';
 
@@ -343,7 +342,6 @@ LandingPage.getLayout = function getLayout(page) {
     return (
         <React.Fragment>
             {page}
-            <AppConfig simple />
         </React.Fragment>
     );
 };
