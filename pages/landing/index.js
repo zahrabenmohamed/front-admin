@@ -66,7 +66,7 @@ const LandingPage = () => {
                         <h1 className="text-6xl font-bold text-gray-900 line-height-2">
                             <span className="font-light block">Fast Reliable Scalable</span>Document Generation
                         </h1>
-                        <p className="font-normal text-2xl line-height-3 md:mt-3 text-gray-700">Sed blandit libero volutpat sed cras. Fames ac turpis egestas integer. Placerat in egestas erat... </p>
+                        <p className="font-normal text-2xl line-height-3 md:mt-3 text-gray-700"> A smart template based-approach to generating custom documents </p>
                         <Button label="Get Started" rounded className="text-xl border-none mt-3 bg-blue-500 font-normal line-height-3 px-3 text-white"></Button>
                     </div>
                     <div className="flex justify-content-center md:justify-content-end">
@@ -94,7 +94,7 @@ const LandingPage = () => {
                                     <div className="flex align-items-center justify-content-center bg-yellow-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
                                         <i className="pi pi-fw pi-users text-2xl text-yellow-700"></i>
                                     </div>
-                                    <h5 className="mb-2 text-900">Easy to Use</h5>
+                                    <h5 className="mb-2 text-900">Document Generation</h5>
                                     <span className="text-600">Posuere morbi leo urna molestie.</span>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@ const LandingPage = () => {
                                     <div className="flex align-items-center justify-content-center bg-cyan-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
                                         <i className="pi pi-fw pi-palette text-2xl text-cyan-700"></i>
                                     </div>
-                                    <h5 className="mb-2 text-900">Fresh Design</h5>
+                                    <h5 className="mb-2 text-900">Generate documents fast</h5>
                                     <span className="text-600">Semper risus in hendrerit.</span>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@ const LandingPage = () => {
                                     <div className="flex align-items-center justify-content-center bg-indigo-200" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
                                         <i className="pi pi-fw pi-map text-2xl text-indigo-700"></i>
                                     </div>
-                                    <h5 className="mb-2 text-900">Well Documented</h5>
+                                    <h5 className="mb-2 text-900">Template Creation</h5>
                                     <span className="text-600">Non arcu risus quis varius quam quisque.</span>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@ const LandingPage = () => {
                                     <div className="flex align-items-center justify-content-center bg-bluegray-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
                                         <i className="pi pi-fw pi-id-card text-2xl text-bluegray-700"></i>
                                     </div>
-                                    <h5 className="mb-2 text-900">Responsive Layout</h5>
+                                    <h5 className="mb-2 text-900">Multiple Output Formats</h5>
                                     <span className="text-600">Nulla malesuada pellentesque elit.</span>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@ const LandingPage = () => {
                                     <div className="flex align-items-center justify-content-center bg-orange-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
                                         <i className="pi pi-fw pi-star text-2xl text-orange-700"></i>
                                     </div>
-                                    <h5 className="mb-2 text-900">Clean Code</h5>
+                                    <h5 className="mb-2 text-900">Easy Integration</h5>
                                     <span className="text-600">Condimentum lacinia quis vel eros.</span>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@ const LandingPage = () => {
                                     <div className="flex align-items-center justify-content-center bg-pink-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
                                         <i className="pi pi-fw pi-moon text-2xl text-pink-700"></i>
                                     </div>
-                                    <h5 className="mb-2 text-900">Dark Mode</h5>
+                                    <h5 className="mb-2 text-900">Share document via Mail</h5>
                                     <span className="text-600">Convallis tellus id interdum velit laoreet.</span>
                                 </div>
                             </div>
@@ -208,7 +208,7 @@ const LandingPage = () => {
                                     <div className="flex align-items-center justify-content-center bg-teal-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
                                         <i className="pi pi-fw pi-shopping-cart text-2xl text-teal-700"></i>
                                     </div>
-                                    <h5 className="mb-2 text-900">Ready to Use</h5>
+                                    <h5 className="mb-2 text-900">Archiving documents</h5>
                                     <span className="text-600">Mauris sit amet massa vitae.</span>
                                 </div>
                             </div>
@@ -328,7 +328,6 @@ const LandingPage = () => {
 
                                 <div className="col-12 md:col-3 mt-4 md:mt-0">
                                     <h4 className="font-medium text-2xl line-height-3 mb-3 text-900">Legal</h4>
-                                    <a className="line-height-3 text-xl block cursor-pointer mb-2 text-700">Privacy Policy</a>
                                     <a className="line-height-3 text-xl block cursor-pointer text-700">Terms of Service</a>
                                 </div>
                             </div>
