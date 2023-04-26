@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react';
 import Link from 'next/link';
-
+import AppConfig from '../../layout/AppConfig';
 import { StyleClass } from 'primereact/styleclass';
 import { Button } from 'primereact/button';
 import { Ripple } from 'primereact/ripple';
@@ -9,9 +9,8 @@ import { classNames } from 'primereact/utils';
 
 const LandingPage = () => {
     const [isHidden, setIsHidden] = useState(false);
-    const { layoutConfig } = useContext(LayoutContext);
     const menuRef = useRef();
-
+    const { layoutConfig } = useContext(LayoutContext);
     const toggleMenuItemClick = () => {
         setIsHidden((prevState) => !prevState);
     };
@@ -38,12 +37,6 @@ const LandingPage = () => {
                             <li>
                                 <a href="#features" onClick={toggleMenuItemClick} className="p-ripple flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
                                     <span>Features</span>
-                                    <Ripple />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#highlights" onClick={toggleMenuItemClick} className="p-ripple flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
-                                    <span>Highlights</span>
                                     <Ripple />
                                 </a>
                             </li>
@@ -76,7 +69,7 @@ const LandingPage = () => {
                 <div id="features" className="py-4 px-4 lg:px-8 mt-5 mx-0 lg:mx-8">
                     <div className="grid justify-content-center">
                         <div className="col-12 text-center mt-8 mb-4">
-                            <h2 className="text-900 font-normal mb-2">Marvelous Features</h2>
+                            <h2 className="text-900 font-normal mb-2">Our Features</h2>
                             <span className="text-600 text-2xl">Placerat in egestas erat...</span>
                         </div>
 
@@ -91,7 +84,7 @@ const LandingPage = () => {
                             >
                                 <div className="p-3 surface-card h-full" style={{ borderRadius: '8px' }}>
                                     <div className="flex align-items-center justify-content-center bg-yellow-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
-                                        <i className="pi pi-fw pi-users text-2xl text-yellow-700"></i>
+                                        <i className="pi pi-fw pi-file text-2xl text-yellow-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Document Generation</h5>
                                     <span className="text-600">Posuere morbi leo urna molestie.</span>
@@ -110,7 +103,7 @@ const LandingPage = () => {
                             >
                                 <div className="p-3 surface-card h-full" style={{ borderRadius: '8px' }}>
                                     <div className="flex align-items-center justify-content-center bg-cyan-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
-                                        <i className="pi pi-fw pi-palette text-2xl text-cyan-700"></i>
+                                        <i className="pi pi-fw pi-cog text-2xl text-cyan-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Generate documents fast</h5>
                                     <span className="text-600">Semper risus in hendrerit.</span>
@@ -129,7 +122,7 @@ const LandingPage = () => {
                             >
                                 <div className="p-3 surface-card h-full" style={{ borderRadius: '8px' }}>
                                     <div className="flex align-items-center justify-content-center bg-indigo-200" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
-                                        <i className="pi pi-fw pi-map text-2xl text-indigo-700"></i>
+                                        <i className="pi pi-fw pi-folder text-2xl text-indigo-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Template Creation</h5>
                                     <span className="text-600">Non arcu risus quis varius quam quisque.</span>
@@ -148,7 +141,7 @@ const LandingPage = () => {
                             >
                                 <div className="p-3 surface-card h-full" style={{ borderRadius: '8px' }}>
                                     <div className="flex align-items-center justify-content-center bg-bluegray-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
-                                        <i className="pi pi-fw pi-id-card text-2xl text-bluegray-700"></i>
+                                        <i className="pi pi-fw pi-file-pdf text-2xl text-bluegray-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Multiple Output Formats</h5>
                                     <span className="text-600">Nulla malesuada pellentesque elit.</span>
@@ -167,7 +160,7 @@ const LandingPage = () => {
                             >
                                 <div className="p-3 surface-card h-full" style={{ borderRadius: '8px' }}>
                                     <div className="flex align-items-center justify-content-center bg-orange-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
-                                        <i className="pi pi-fw pi-star text-2xl text-orange-700"></i>
+                                        <i className="pi pi-fw pi-share-alt text-2xl text-orange-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Easy Integration</h5>
                                     <span className="text-600">Condimentum lacinia quis vel eros.</span>
@@ -186,9 +179,9 @@ const LandingPage = () => {
                             >
                                 <div className="p-3 surface-card h-full" style={{ borderRadius: '8px' }}>
                                     <div className="flex align-items-center justify-content-center bg-pink-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
-                                        <i className="pi pi-fw pi-moon text-2xl text-pink-700"></i>
+                                        <i className="pi pi-fw pi-envelope text-2xl text-pink-700"></i>
                                     </div>
-                                    <h5 className="mb-2 text-900">Share document via Mail</h5>
+                                    <h5 className="mb-2 text-900">Share document via Mail or SMS</h5>
                                     <span className="text-600">Convallis tellus id interdum velit laoreet.</span>
                                 </div>
                             </div>
@@ -205,7 +198,7 @@ const LandingPage = () => {
                             >
                                 <div className="p-3 surface-card h-full" style={{ borderRadius: '8px' }}>
                                     <div className="flex align-items-center justify-content-center bg-teal-200 mb-3" style={{ width: '3.5rem', height: '3.5rem', borderRadius: '10px' }}>
-                                        <i className="pi pi-fw pi-shopping-cart text-2xl text-teal-700"></i>
+                                        <i className="pi pi-fw pi-inbox text-2xl text-teal-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Archiving documents</h5>
                                     <span className="text-600">Mauris sit amet massa vitae.</span>
@@ -262,51 +255,10 @@ const LandingPage = () => {
                                     “Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
                                     laborum.”
                                 </p>
-                                <img src="/demo/images/landing/peak-logo.svg" className="mt-4" alt="Company logo" />
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div id="highlights" className="py-4 px-4 lg:px-8 mx-0 my-6 lg:mx-8">
-                    <div className="text-center">
-                        <h2 className="text-900 font-normal mb-2">Powerful Everywhere</h2>
-                        <span className="text-600 text-2xl">Amet consectetur adipiscing elit...</span>
-                    </div>
-
-                    <div className="grid mt-8 pb-2 md:pb-8">
-                        <div className="flex justify-content-center col-12 lg:col-6 bg-purple-100 p-0 flex-order-1 lg:flex-order-0" style={{ borderRadius: '8px' }}>
-                            <img src="/demo/images/landing/mockup.svg" className="w-11" alt="mockup mobile" />
-                        </div>
-
-                        <div className="col-12 lg:col-6 my-auto flex flex-column lg:align-items-end text-center lg:text-right">
-                            <div className="flex align-items-center justify-content-center bg-purple-200 align-self-center lg:align-self-end" style={{ width: '4.2rem', height: '4.2rem', borderRadius: '10px' }}>
-                                <i className="pi pi-fw pi-mobile text-5xl text-purple-700"></i>
-                            </div>
-                            <h2 className="line-height-1 text-900 text-4xl font-normal">Congue Quisque Egestas</h2>
-                            <span className="text-700 text-2xl line-height-3 ml-0 md:ml-2" style={{ maxWidth: '650px' }}>
-                                Lectus arcu bibendum at varius vel pharetra vel turpis nunc. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Sit amet mattis vulputate enim nulla aliquet.
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="grid my-8 pt-2 md:pt-8">
-                        <div className="col-12 lg:col-6 my-auto flex flex-column text-center lg:text-left lg:align-items-start">
-                            <div className="flex align-items-center justify-content-center bg-yellow-200 align-self-center lg:align-self-start" style={{ width: '4.2rem', height: '4.2rem', borderRadius: '10px' }}>
-                                <i className="pi pi-fw pi-desktop text-5xl text-yellow-700"></i>
-                            </div>
-                            <h2 className="line-height-1 text-900 text-4xl font-normal">Celerisque Eu Ultrices</h2>
-                            <span className="text-700 text-2xl line-height-3 mr-0 md:mr-2" style={{ maxWidth: '650px' }}>
-                                Adipiscing commodo elit at imperdiet dui. Viverra nibh cras pulvinar mattis nunc sed blandit libero. Suspendisse in est ante in. Mauris pharetra et ultrices neque ornare aenean euismod elementum nisi.
-                            </span>
-                        </div>
-
-                        <div className="flex justify-content-end flex-order-1 sm:flex-order-2 col-12 lg:col-6 bg-yellow-100 p-0" style={{ borderRadius: '8px' }}>
-                            <img src="/demo/images/landing/mockup-desktop.svg" className="w-11" alt="mockup" />
-                        </div>
-                    </div>
-                </div>
-
 
                 <div className="py-4 px-4 mx-0 mt-8 lg:mx-8">
                     <div className="grid justify-content-between">
@@ -341,7 +293,9 @@ const LandingPage = () => {
 LandingPage.getLayout = function getLayout(page) {
     return (
         <React.Fragment>
+        
             {page}
+        <AppConfig simple />
         </React.Fragment>
     );
 };
