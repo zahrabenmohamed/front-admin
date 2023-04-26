@@ -62,7 +62,7 @@ const LandingPage = () => {
                         <Button label="Get Started" rounded className="text-xl border-none mt-3 bg-blue-500 font-normal line-height-3 px-3 text-white"></Button>
                     </div>
                     <div className="flex justify-content-center md:justify-content-end">
-                        <img src="/demo/images/landing/screen-1.png" alt="Hero Image" className="w-9 md:w-auto" />
+                        <img src="/demo/images/landing/screen-1.png" alt="Hero Image" className="w-9 md:w-auto" style={{maxWidth: '60%'}}/>
                     </div>
                 </div>
 
