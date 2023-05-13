@@ -42,12 +42,12 @@ const AppMenu = () => {
                 {
                     label: 'Users',
                     icon: 'pi pi-fw pi-user',
-                    to: ''
+                    to: '/pages/users'
                 },
                 {
                     label: 'Setting',
                     icon: 'pi pi-fw pi-cog',
-                    to: ''
+                    to: '/pages/setting'
                 },
                 {
                     label: 'Help',

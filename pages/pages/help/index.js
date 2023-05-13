@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Card } from 'primereact/card';
+
 
 const HelpPage = () => {
   return (
@@ -8,7 +10,7 @@ const HelpPage = () => {
       <Head>
         <title>Help and Support</title>
       </Head>
-      <div>
+      <Card>
         <h1>Help and Support</h1>
         <p>Here are some frequently asked questions:</p>
         <ul>
@@ -18,7 +20,7 @@ const HelpPage = () => {
         </ul>
         <p>If you need further assistance, please contact us at support@yourapp.com</p>
         <Link href="/">Back to home</Link>
-      </div>
+      </Card>
     </>
   );
 };
