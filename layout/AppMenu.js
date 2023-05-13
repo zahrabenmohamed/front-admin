@@ -51,7 +51,7 @@ const AppMenu = () => {
                 },
                 {
                     label: 'Help',
-                    icon: 'pi pi-fw pi-question-circle',
+                    icon: 'pi pi-fw pi-info-circle',
                     to: '/pages/help'
                 },
                 
