@@ -36,17 +36,17 @@ const AppMenu = () => {
                 },
                 {
                     label: 'Documents',
-                    icon: 'pi pi-fw pi-globe',
+                    icon: 'pi pi-fw pi-file',
                     to: ''
                 },
                 {
                     label: 'Users',
-                    icon: 'pi pi-fw pi-globe',
+                    icon: 'pi pi-fw pi-user',
                     to: ''
                 },
                 {
                     label: 'Setting',
-                    icon: 'pi pi-fw pi-globe',
+                    icon: 'pi pi-fw pi-cog',
                     to: ''
                 },
                 {
@@ -57,7 +57,7 @@ const AppMenu = () => {
                 
                 {
                     label: 'Log out',
-                    icon: 'pi pi-fw pi-globe',
+                    icon: 'pi pi-fw pi-sign-out',
                     to: ''
                 },
             ]
