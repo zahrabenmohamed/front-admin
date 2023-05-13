@@ -32,11 +32,7 @@ const AppTopbar = forwardRef((props, ref) => {
                 <i className="pi pi-ellipsis-v" />
             </button>
 
-            <div ref={topbarmenuRef} className={classNames('layout-topbar-menu', { 'layout-topbar-menu-mobile-active': layoutState.profileSidebarVisible })}>
-                
-            <Button label="Logout" className="p-button-info" />
-    
-            </div>
+           
         </div>
     );
 });

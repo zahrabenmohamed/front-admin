@@ -20,7 +20,7 @@ const Dashboard = () => {
                     pointBorderColor: documentStyle.getPropertyValue('--pink-400'),
                     pointHoverBackgroundColor: textColor,
                     pointHoverBorderColor: documentStyle.getPropertyValue('--pink-400'),
-                    data: [28, 48, 40, 19, 96, 27, 100]
+                    data: [28, 48, 40, 19]
                 }
             ]
         };

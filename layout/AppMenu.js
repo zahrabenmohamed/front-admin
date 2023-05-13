@@ -23,6 +23,7 @@ const AppMenu = () => {
                     to: '/landing'
                 },
                
+               
                 {
                     label: 'Template Generator',
                     icon: 'pi pi-fw pi-pencil',
@@ -32,6 +33,32 @@ const AppMenu = () => {
                     label: 'Templates',
                     icon: 'pi pi-fw pi-pencil',
                     to: '/pages/templates'
+                },
+                {
+                    label: 'Documents',
+                    icon: 'pi pi-fw pi-globe',
+                    to: ''
+                },
+                {
+                    label: 'Users',
+                    icon: 'pi pi-fw pi-globe',
+                    to: ''
+                },
+                {
+                    label: 'Setting',
+                    icon: 'pi pi-fw pi-globe',
+                    to: ''
+                },
+                {
+                    label: 'Help',
+                    icon: 'pi pi-fw pi-globe',
+                    to: '/pages/help'
+                },
+                
+                {
+                    label: 'Log out',
+                    icon: 'pi pi-fw pi-globe',
+                    to: ''
                 },
             ]
         },
