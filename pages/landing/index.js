@@ -6,6 +6,8 @@ import { Button } from 'primereact/button';
 import { Ripple } from 'primereact/ripple';
 import { LayoutContext } from '../../layout/context/layoutcontext';
 import { classNames } from 'primereact/utils';
+import 'primeicons/primeicons.css';
+
 
 const LandingPage = () => {
     const [isHidden, setIsHidden] = useState(false);
@@ -62,7 +64,7 @@ const LandingPage = () => {
                         <Button label="Get Started" rounded className="text-xl border-none mt-3 bg-blue-500 font-normal line-height-3 px-3 text-white"></Button>
                     </div>
                     <div className="flex justify-content-center md:justify-content-end">
-                        <img src="/demo/images/landing/hero.svg" alt="Hero Image" className="w-9 md:w-auto" style={{maxWidth: '60%'}}/>
+                        <img src="/demo/images/landing/he.svg" alt="Hero Image" className="w-9 md:w-auto" style={{maxWidth: '60%'}}/>
                     </div>
                 </div>
 
@@ -70,7 +72,7 @@ const LandingPage = () => {
                     <div className="grid justify-content-center">
                         <div className="col-12 text-center mt-8 mb-4">
                             <h2 className="text-900 font-normal mb-2">Our Features</h2>
-                            <span className="text-600 text-2xl">Placerat in egestas erat...</span>
+                            <span className="text-600 text-2xl"></span>
                         </div>
 
                         <div className="col-12 md:col-12 lg:col-4 p-0 lg:pr-5 lg:pb-5 mt-4 lg:mt-0">
@@ -87,7 +89,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-file text-2xl text-yellow-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Document Generation</h5>
-                                    <span className="text-600">Posuere morbi leo urna molestie.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +108,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-cog text-2xl text-cyan-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Generate documents fast</h5>
-                                    <span className="text-600">Semper risus in hendrerit.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +127,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-folder text-2xl text-indigo-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Template Creation</h5>
-                                    <span className="text-600">Non arcu risus quis varius quam quisque.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +146,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-file-pdf text-2xl text-bluegray-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Multiple Output Formats</h5>
-                                    <span className="text-600">Nulla malesuada pellentesque elit.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +165,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-share-alt text-2xl text-orange-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Easy Integration</h5>
-                                    <span className="text-600">Condimentum lacinia quis vel eros.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +184,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-envelope text-2xl text-pink-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Share document via Mail or SMS</h5>
-                                    <span className="text-600">Convallis tellus id interdum velit laoreet.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -201,7 +203,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-inbox text-2xl text-teal-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Archiving documents</h5>
-                                    <span className="text-600">Mauris sit amet massa vitae.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +222,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-globe text-2xl text-blue-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Modern Practices</h5>
-                                    <span className="text-600">Elementum nibh tellus molestie nunc non.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +241,7 @@ const LandingPage = () => {
                                         <i className="pi pi-fw pi-eye text-2xl text-purple-700"></i>
                                     </div>
                                     <h5 className="mb-2 text-900">Privacy</h5>
-                                    <span className="text-600">Neque egestas congue quisque.</span>
+                                    <span className="text-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -249,13 +251,47 @@ const LandingPage = () => {
                             style={{ borderRadius: '20px', background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), radial-gradient(77.36% 256.97% at 77.36% 57.52%, #EFE1AF 0%, #C3DCFA 100%)' }}
                         >
                             <div className="flex flex-column justify-content-center align-items-center text-center px-3 py-3 md:py-0">
-                                <h3 className="text-gray-900 mb-2">Joséphine Miller</h3>
-                                <span className="text-gray-600 text-2xl">Peak Interactive</span>
+                                <h3 className="text-gray-900 mb-2">Why choose DocGen as a Solution to generate your document ?</h3>
                                 <p className="text-gray-900 sm:line-height-2 md:line-height-4 text-2xl mt-4" style={{ maxWidth: '800px' }}>
-                                    “Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                    laborum.”
+                                DocGen offers a highly efficient and automated approach to document generation. By utilizing cutting-edge technology, it minimizes the time and effort required to create professional, error-free documents. With its intuitive interface and robust features, DocGen simplifies the entire process, allowing you to generate documents quickly and easily.
                                 </p>
                             </div>
+                        </div>
+
+                        <div
+                            className="col-12 mt-8 mb-8 p-2 md:p-8"
+                            style={{ borderRadius: '20px', background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), radial-gradient(77.36% 256.97% at 77.36% 57.52%, #EFE1AF 0%, #C3DCFA 100%)' }}
+                        >
+                            <div className="flex flex-column justify-content-center align-items-center text-center px-3 py-3 md:py-0">
+                                <h3 className="text-gray-900 mb-2">How it Works ?</h3>
+                                <div className='mb-3'>
+                                <h5 className='text-gray-700'>STEP 1</h5>
+                                <h3>Design Your Smart Documents</h3>
+                                <p>Design your template within Microsoft Office (Word, Excel, or PowerPoint), with all of its layout and formatting capabilities.
+                                        Connect one or multiple datasources to your DOCX, XLSX, or PPTX template.
+                                        Use tags & conditional logic to customize your content inline, creating a smart document with the best Word document generator.</p>
+                                        <i className="pi pi-arrow-down" style={{ fontSize: '2.5rem' }}></i>
+
+                                </div>
+
+
+                                <div className='mb-3'>
+                                <h5 className='text-gray-700'>STEP 2</h5>
+                                <h3>Generate the Document</h3>
+                                <p>Pass the template, datasource(s) and output destination to the engine.Watch Windward merge your template with your data to create the requested document.</p>
+                                <i className="pi pi-arrow-down" style={{ fontSize: '2.5rem' }}></i>
+                            </div>
+
+
+                            <div>
+                                <h5 className='text-gray-700'>STEP 3</h5>
+                                <h3>Deliver Your Output</h3>
+                                <p>Generate your document/report to a wide variety of output formats: DOCX, XLSX, PPTX, PDF, HTML, and many more.Distribute the generated document via your application</p>
+                            </div>
+
+                            </div>
+                            
+                            
                         </div>
                     </div>
                 </div>

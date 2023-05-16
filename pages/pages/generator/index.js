@@ -37,16 +37,11 @@ const AddParameters = () => {
   );
 
   const leftToolbarTemplate = () => {
-    const templateTypes = [
-        { label: 'Yarg', value: 'yarg' },
-        { label: 'Jasper', value: 'jasper' },
-        { label: 'Freemarker', value: 'freemarker' }
-    ];
+   
 
     return (
             <div className="my-2">
                 <InputText id="code" className="mr-2" placeholder="Template Name"/>
-                <Dropdown  options={templateTypes} placeholder="Select template type" className="mr-2" />
             </div>
         
     );
@@ -141,25 +136,7 @@ const rightToolbarTemplate = () => {
       />
     </div>
   </div>
-  <div className="p-grid p-fluid">
-    <div className="p-col-4">
-      <label htmlFor="selectorType">Selector Type</label>
-    </div>
-    <div className="p-col-8">
-      <Dropdown
-        id="selectorType"
-        options={[
-          { label: "JSON", value: "json" },
-          { label: "XML", value: "xml" },
-        ]}
-        value={formData.selectorType || null}
-        onChange={(e) =>
-          setFormData({ ...formData, selectorType: e.value })
-        }
-        placeholder="Select"
-      />
-    </div>
-  </div>
+  
   <div className="p-grid p-fluid">
     <div className="p-col-4">
       <label htmlFor="description">Description</label>

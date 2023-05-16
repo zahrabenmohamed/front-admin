@@ -38,11 +38,7 @@ const AppMenu = () => {
                     icon: 'pi pi-fw pi-user',
                     to: '/pages/users'
                 },
-                {
-                    label: 'Profile',
-                    icon: 'pi pi-fw pi-cog',
-                    to: '/pages/setting'
-                },
+                
                 {
                     label: 'Help',
                     icon: 'pi pi-fw pi-info-circle',
