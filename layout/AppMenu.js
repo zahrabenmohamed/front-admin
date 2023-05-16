@@ -17,13 +17,7 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-briefcase',
             to: '/pages',
             items: [
-                {
-                    label: 'Landing',
-                    icon: 'pi pi-fw pi-globe',
-                    to: '/landing'
-                },
-               
-               
+                
                 {
                     label: 'Template Generator',
                     icon: 'pi pi-fw pi-pencil',
@@ -37,7 +31,7 @@ const AppMenu = () => {
                 {
                     label: 'Documents',
                     icon: 'pi pi-fw pi-file',
-                    to: ''
+                    to: 'http://localhost:3000'
                 },
                 {
                     label: 'Users',
