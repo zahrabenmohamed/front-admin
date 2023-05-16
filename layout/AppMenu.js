@@ -45,7 +45,7 @@ const AppMenu = () => {
                     to: '/pages/users'
                 },
                 {
-                    label: 'Setting',
+                    label: 'Profile',
                     icon: 'pi pi-fw pi-cog',
                     to: '/pages/setting'
                 },
