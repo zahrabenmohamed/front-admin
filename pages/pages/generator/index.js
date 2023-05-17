@@ -7,11 +7,12 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { FileUpload } from 'primereact/fileupload';
 import { Toolbar } from 'primereact/toolbar';
+import axios from 'axios';
 
-const initialParameters = []; // initial empty data for the DataTable
+
 
 const AddParameters = () => {
-  const [parameters, setParameters] = useState(initialParameters); // state for DataTable data
+  const [parameters, setParameters] = useState(""); // state for DataTable data
   const [dialogVisible, setDialogVisible] = useState(false); // state for showing/hiding the dialog
   const [formData, setFormData] = useState({}); // state for storing form data in the dialog
 
@@ -48,10 +49,31 @@ const AddParameters = () => {
 };
 
 const rightToolbarTemplate = () => {
+
+  const handleSave = async () => {
+    console.log(parameters);
+    try {
+      const payload = {
+        code: 'ZahraLetter',
+        description: 'zahra test',
+        path: '/template/path',
+        templateParam: parameters // assuming `parameters` holds the array of parameters you want to send
+      };
+  
+      // Send a POST request to the backend API
+      const response = await axios.post('http://localhost:8082/add-template', payload);
+  
+      // Handle the response from the backend
+      console.log('Parameter saved:', response.data);
+    } catch (error) {
+      console.error('Error saving parameter:', error);
+      // Handle the error if necessary
+    }
+  };
     return (
         <>
             <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} label="Import" chooseLabel="Import Template" className="mr-2 inline-block" />
-            <Button label="Save" severity="help" />
+            <Button label="Save" severity="help" onClick={handleSave} />
         </>
     );
 };
@@ -68,7 +90,7 @@ const rightToolbarTemplate = () => {
     <>
         <Button label="Cancel" icon="pi pi-times" text  onClick={() => setDialogVisible(false)}
 />
-        <Button label="Save" icon="pi pi-check" text onClick={handleAddParameter}/>
+        <Button label="Add" icon="pi pi-check" text onClick={handleAddParameter}/>
     </>
 );
 
@@ -147,6 +169,20 @@ const rightToolbarTemplate = () => {
         value={formData.description || ""}
         onChange={(e) =>
           setFormData({ ...formData, description: e.target.value })
+        }
+      />
+    </div>
+  </div>
+  <div className="p-grid p-fluid">
+    <div className="p-col-4">
+      <label htmlFor="selectorType">Selector Type</label>
+    </div>
+    <div className="p-col-8">
+      <InputText
+        id="description"
+        value={formData.selectorType || ""}
+        onChange={(e) =>
+          setFormData({ ...formData, selectorType: e.target.value })
         }
       />
     </div>
