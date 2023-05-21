@@ -15,6 +15,9 @@ const AddParameters = () => {
   const [parameters, setParameters] = useState(""); // state for DataTable data
   const [dialogVisible, setDialogVisible] = useState(false); // state for showing/hiding the dialog
   const [formData, setFormData] = useState({}); // state for storing form data in the dialog
+  const [inputValue, setInputValue] = useState('');
+  const [pathValue,setPathValue]=useState('');
+
 
 
 
@@ -38,11 +41,15 @@ const AddParameters = () => {
   );
 
   const leftToolbarTemplate = () => {
+
    
 
     return (
             <div className="my-2">
-                <InputText id="code" className="mr-2" placeholder="Template Name"/>
+                <InputText id="code" className="mr-2" placeholder="Template Name"  value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}/>
+                <InputText id="path" className="mr-2" placeholder="Template Path"  value={pathValue} onChange={(e) => setPathValue(e.target.value)}/>
+
             </div>
         
     );
@@ -52,11 +59,11 @@ const rightToolbarTemplate = () => {
 
   const handleSave = async () => {
     console.log(parameters);
+    console.log(code);
     try {
       const payload = {
-        code: 'ZahraLetter',
-        description: 'zahra test',
-        path: '/template/path',
+        code: inputValue,
+        path: pathValue,
         templateParam: parameters // assuming `parameters` holds the array of parameters you want to send
       };
   
