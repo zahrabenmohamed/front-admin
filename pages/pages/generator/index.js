@@ -13,7 +13,6 @@ const AddParameters = () => {
   const [parameters, setParameters] = useState(""); // state for DataTable data
   const [dialogVisible, setDialogVisible] = useState(false); // state for showing/hiding the dialog
   const [formData, setFormData] = useState({}); // state for storing form data in the dialog
-  const [selectedType, setSelectedType] = useState("");
 
   const templateName = useRef("templateName");
 
@@ -37,20 +36,7 @@ const AddParameters = () => {
   const leftToolbarTemplate = () => {
     return (
       <div className='my-2'>
-        <InputText
-          ref={templateName}
-          id='templateName'
-          className='mr-2'
-          placeholder='Template Name'
-        />
-        <Dropdown
-          value={selectedType}
-          onChange={(e) => setSelectedType(e.value)}
-          options={templateType}
-          optionLabel='name'
-          placeholder='Select a Type'
-          className='w-full md:w-14rem'
-        />
+        <InputText id='code' className='mr-2' placeholder='Template Name' />
       </div>
     );
   };
@@ -61,15 +47,15 @@ const AddParameters = () => {
       console.log(parameters);
       try {
         const payload = {
-          templateName: templateName.current.value,
-          type: selectedType.name,
-          path: "test/test",
+          code: "ZahraLetter",
+          description: "zahra test",
+          path: "/template/path",
           templateParam: parameters, // assuming `parameters` holds the array of parameters you want to send
         };
-        console.log(payload);
+
         // Send a POST request to the backend API
         const response = await axios.post(
-          "http://localhost:8082/addtemplate",
+          "http://localhost:8082/add-template",
           payload
         );
 
