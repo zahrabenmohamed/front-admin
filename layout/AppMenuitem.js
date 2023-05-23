@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Ripple } from "primereact/ripple";
 import { classNames } from "primereact/utils";
 import React, { useEffect, useContext, useRef } from "react";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import {  confirmDialog } from "primereact/confirmdialog";
 import { Toast } from "primereact/toast";
 import { CSSTransition } from "react-transition-group";
 import { MenuContext } from "./context/menucontext";
