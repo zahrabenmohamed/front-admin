@@ -1,10 +1,11 @@
 import { Accordion, AccordionTab } from "primereact/accordion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { Dialog } from "primereact/dialog";
 import { InputTextarea } from "primereact/inputtextarea";
+import { Toast } from "primereact/toast";
 
 const questionsAndAnswers = [
   {
@@ -30,18 +31,35 @@ const questionsAndAnswers = [
       "Yes, document generation systems often provide APIs or integrations that allow seamless integration with other systems or applications. This enables the automated generation of documents using data from existing databases, CRMs, or other software solutions.",
   },
 ];
+
 const Help = () => {
   const [value, setValue] = useState("");
   const [visible, setVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
+  const toast = useRef(null);
+
+  const send = () => {
+    setVisible(false);
+    toast.current.show({
+      severity: "info",
+      detail: "Message sent ",
+      life: 1000,
+    });
+  };
+  const footerContent = (
+    <div>
+      <Button label='Send' icon='pi pi-check' onClick={send} />
+    </div>
+  );
 
   return (
     <>
       <Dialog
-        header='Contact Us'
+        header='Header'
         visible={visible}
         style={{ width: "50vw" }}
         onHide={() => setVisible(false)}
+        footer={footerContent}
       >
         <div className='card flex justify-content-center'>
           <span className='p-float-label'>
@@ -56,6 +74,7 @@ const Help = () => {
           </span>
         </div>
       </Dialog>
+      <Toast ref={toast}></Toast>
       <Card>
         <h2>FAQ</h2>
         <h4>Have Questions we are here to help</h4>

@@ -7,14 +7,22 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { FileUpload } from "primereact/fileupload";
 import { Toolbar } from "primereact/toolbar";
+import { Toast } from "primereact/toast";
 import axios from "axios";
 
 const AddParameters = () => {
   const [parameters, setParameters] = useState(""); // state for DataTable data
-  const [dialogVisible, setDialogVisible] = useState(false); // state for showing/hiding the dialog
+  const [dialogVisible, setDialogVisible] = useState(false);
+  const [editDialogVisible, setEditDialogVisible] = useState(false); // state for showing/hiding the dialog
   const [formData, setFormData] = useState({}); // state for storing form data in the dialog
-
-  const templateName = useRef("templateName");
+  const [template, setTemplate] = useState({
+    templateName: "",
+    type: "",
+    path: "",
+  });
+  const [selectedFile, setSelectedFile] = useState(null);
+  const fileUploadRef = useRef(null);
+  const toast = useRef(null);
 
   const header = (
     <div className='flex flex-column md:flex-row md:justify-content-between md:align-items-center'>
@@ -23,7 +31,6 @@ const AddParameters = () => {
         label='New'
         type='button'
         icon='pi pi-plus'
-        severity='success'
         className='mr-2'
         onClick={() => {
           setFormData({}); // clear the form data
@@ -33,59 +40,147 @@ const AddParameters = () => {
     </div>
   );
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setTemplate((prevProps) => ({
+      ...prevProps,
+      [name]: value,
+    }));
+  };
   const leftToolbarTemplate = () => {
     return (
       <div className='my-2'>
-        <InputText id='code' className='mr-2' placeholder='Template Name' />
+        <InputText
+          value={template.templateName}
+          id='templateName'
+          className='mr-2'
+          placeholder='Template Name'
+          name='templateName'
+          onChange={handleChange}
+        />
+        <Dropdown
+          value={template.type}
+          options={templateType}
+          optionLabel='name'
+          name='type'
+          placeholder='Select a Type'
+          className='w-full md:w-14rem'
+          onChange={handleChange}
+        />
       </div>
     );
   };
-  const templateType = [{ name: "YARG " }, { name: "Jasper" }];
+  const templateType = [{ name: "YARG" }, { name: "Jasper" }];
+
+  const handleSave = async () => {
+    fileUploadRef.current.upload();
+  };
+
+  const uploadFile = (file) => {
+    const Params = { params: parameters };
+    const template1 = {
+      ...template,
+      path: file.name,
+      type: template.type.name,
+    };
+    const data = Object.assign({}, template1, Params);
+
+    const payload = new FormData();
+    payload.append("data", JSON.stringify(data));
+    payload.append("file", file);
+
+    // Send the POST request using Axios
+    axios
+      .post("http://localhost:8082/addtemplate", payload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        // Handle the success response
+        setFormData({}); // Reset the form data
+        setTemplate({ templateName: "", type: "", path: "" }); // Clear the inputs
+        setParameters([]);
+        clearFile();
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle the error
+      });
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.files[0];
+    uploadFile(file);
+  };
+  const clearFile = () => {
+    setSelectedFile(null);
+    fileUploadRef.current.clear(); // Clear the file input
+  };
 
   const rightToolbarTemplate = () => {
-    const handleSave = async () => {
-      console.log(parameters);
-      try {
-        const payload = {
-          code: "ZahraLetter",
-          description: "zahra test",
-          path: "/template/path",
-          templateParam: parameters, // assuming `parameters` holds the array of parameters you want to send
-        };
-
-        // Send a POST request to the backend API
-        const response = await axios.post(
-          "http://localhost:8082/add-template",
-          payload
-        );
-
-        // Handle the response from the backend
-        console.log("Parameter saved:", response.data);
-      } catch (error) {
-        console.error("Error saving parameter:", error);
-        // Handle the error if necessary
-      }
-    };
     return (
       <>
         <FileUpload
+          ref={fileUploadRef}
           mode='basic'
-          accept='image/*'
-          maxFileSize={1000000}
           label='Import'
           chooseLabel='Import Template'
           className='mr-2 inline-block'
+          customUpload
+          uploadHandler={handleFileUpload}
+          onSelect={(e) => setSelectedFile(e.files[0])}
         />
-        <Button label='Save' severity='help' onClick={handleSave} />
+        <Button
+          style={{ marginRight: "8px" }}
+          label='Clear File'
+          severity='danger'
+          onClick={clearFile}
+        />
+        <Button label='Save' onClick={handleSave} severity='success' />
       </>
     );
   };
 
+  const handleDelete = (rowData) => {
+    const updatedParameters = parameters.filter((param) => param !== rowData);
+    setParameters(updatedParameters);
+  };
+
+  const handleEdit = (rowData) => {
+    setFormData({ ...rowData });
+    setEditDialogVisible(true);
+  };
+  const handleEditParameter = (event) => {
+    console.log(event);
+    const updatedParameters = [...parameters]; // Create a copy of the parameters array
+    const index = updatedParameters.findIndex(
+      (param) => param.name === event.rowData.name
+    );
+
+    if (index !== -1) {
+      updatedParameters[index] = { ...rowData }; // Update the parameter at the found index with the edited row data
+      setParameters(updatedParameters); // Update the parameters state with the updated array
+      setEditDialogVisible(false); // Hide the edit dialog
+    }
+  };
+
   // function to handle adding a new parameter to the DataTable
   const handleAddParameter = () => {
-    setParameters([...parameters, formData]); // add the form data to the DataTable
-    setFormData({}); // clear the form data
-    setDialogVisible(false); // hide the dialog
+    if (Object.keys(formData).length === 0) {
+      setDialogVisible(false);
+      toast.current.show({
+        severity: "info",
+        detail: "Empty Parameter",
+        life: 1000,
+      });
+    } else {
+      setParameters([...parameters, formData]); // add the form data to the DataTable
+      setFormData({}); // clear the form data
+      setDialogVisible(false); // hide the dialog
+    }
   };
 
   const parameterDialogFooter = (
@@ -104,9 +199,139 @@ const AddParameters = () => {
       />
     </>
   );
+  const parameterEditDialogFooter = (rowData) => {
+    console.log(rowData);
+
+    return (
+      <>
+        <Button
+          label='Cancel'
+          icon='pi pi-times'
+          text
+          onClick={() => setEditDialogVisible(false)}
+        />
+        <Button
+          label='Edit'
+          icon='pi pi-check'
+          text
+          onClick={handleEditParameter}
+        />
+      </>
+    );
+  };
+  const actionTemplate = (rowData) => {
+    return (
+      <div>
+        <Dialog
+          visible={editDialogVisible}
+          style={{ width: "450px" }}
+          onHide={() => setEditDialogVisible(false)}
+          header='Edit Parameter'
+          footer={parameterEditDialogFooter}
+        >
+          <div className='p-grid p-fluid'>
+            <div className='p-col-4'>
+              <label htmlFor='name'>Name</label>
+            </div>
+            <div className='p-col-8'>
+              <InputText
+                id='name'
+                value={formData.name || ""}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                required
+              />
+            </div>
+          </div>
+          <div className='p-grid p-fluid'>
+            <div className='p-col-4'>
+              <label htmlFor='selector'>Selector</label>
+            </div>
+            <div className='p-col-8'>
+              <InputText
+                id='selector'
+                value={formData.selector || ""}
+                onChange={(e) =>
+                  setFormData({ ...formData, selector: e.target.value })
+                }
+                required
+              />
+            </div>
+          </div>
+
+          <div className='p-grid p-fluid'>
+            <div className='p-col-4'>
+              <label htmlFor='selectorType'>Selector Type</label>
+            </div>
+            <div className='p-col-8'>
+              <Dropdown
+                id='description'
+                options={[
+                  { label: "JSON", value: "JSON" },
+                  { label: "XML", value: "XML" },
+                ]}
+                value={formData.selectorType || null}
+                onChange={(e) =>
+                  setFormData({ ...formData, selectorType: e.value })
+                }
+                placeholder='Select'
+              />
+            </div>
+          </div>
+          <div className='p-grid p-fluid'>
+            <div className='p-col-4'>
+              <label htmlFor='type'>Type</label>
+            </div>
+            <div className='p-col-8'>
+              <Dropdown
+                id='type'
+                options={[
+                  { label: "Text", value: "text" },
+                  { label: "Number", value: "number" },
+                  { label: "Boolean", value: "boolean" },
+                ]}
+                value={formData.type || null}
+                onChange={(e) => setFormData({ ...formData, type: e.value })}
+                placeholder='Select'
+              />
+            </div>
+          </div>
+          <div className='p-grid p-fluid'>
+            <div className='p-col-4'>
+              <label htmlFor='source'>Source</label>
+            </div>
+            <div className='p-col-8'>
+              <InputText
+                id='source'
+                value={formData.source || ""}
+                onChange={(e) =>
+                  setFormData({ ...formData, source: e.target.value })
+                }
+              />
+            </div>
+          </div>
+        </Dialog>
+        <Button
+          icon='pi pi-pencil'
+          className='p-button-rounded p-button-warning'
+          style={{ marginRight: "3px" }}
+          onClick={() => {
+            handleEdit(rowData);
+          }}
+        />
+        <Button
+          icon='pi pi-trash'
+          className='p-button-rounded p-button-danger p-mr-2'
+          onClick={() => handleDelete(rowData)}
+        />
+      </div>
+    );
+  };
 
   return (
     <div className='grid crud-demo'>
+      <Toast ref={toast} />
       <div className='col-12'>
         <div className='card'>
           <Toolbar
@@ -126,6 +351,7 @@ const AddParameters = () => {
             <Column field='selectorType' header='Selector Type' />
             <Column field='source' header='Source' />
             <Column field='type' header='Type' />
+            <Column field='edit' header='Edit/Delete' body={actionTemplate} />
           </DataTable>
         </div>
 
@@ -172,12 +398,17 @@ const AddParameters = () => {
               <label htmlFor='selectorType'>Selector Type</label>
             </div>
             <div className='p-col-8'>
-              <InputText
+              <Dropdown
                 id='description'
-                value={formData.selectorType || ""}
+                options={[
+                  { label: "JSON", value: "JSON" },
+                  { label: "XML", value: "XML" },
+                ]}
+                value={formData.selectorType || null}
                 onChange={(e) =>
-                  setFormData({ ...formData, selectorType: e.target.value })
+                  setFormData({ ...formData, selectorType: e.value })
                 }
+                placeholder='Select'
               />
             </div>
           </div>

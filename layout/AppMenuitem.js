@@ -36,7 +36,6 @@ const AppMenuitem = (props) => {
   const reject = () => {
     toast.current.show({
       severity: "info",
-      summary: "Rejected",
       detail: "You are still logged in",
       life: 1000,
     });
