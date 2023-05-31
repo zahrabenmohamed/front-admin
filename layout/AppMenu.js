@@ -32,13 +32,16 @@ const AppMenu = () => {
           icon: "pi pi-fw pi-file",
           to: "http://localhost:3000",
         },
-
         {
           label: "Help",
           icon: "pi pi-fw pi-info-circle",
           to: "/pages/help",
         },
-
+        {
+          label: "Setting",
+          icon: "pi pi-fw pi-cog",
+          to: "/pages/setting",
+        },
         {
           label: "Log out",
           icon: "pi pi-fw pi-sign-out",
