@@ -28,6 +28,16 @@ const AppMenu = () => {
           to: "/pages/templates",
         },
         {
+          label: "Document Generator",
+          icon: "pi pi-fw pi-pencil",
+          to: "/pages/documentGeneration",
+        },
+        {
+          label: "Generator v2",
+          icon: "pi pi-fw pi-pencil",
+          to: "/pages/generation",
+        },
+        {
           label: "Documents",
           icon: "pi pi-fw pi-file",
           to: "http://localhost:3000",
