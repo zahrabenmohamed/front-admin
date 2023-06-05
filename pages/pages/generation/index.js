@@ -3,6 +3,8 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import axios from 'axios';
 import { Toast } from 'primereact/toast';
+import { ProgressSpinner } from 'primereact/progressspinner';
+
 
 export default function TemplatePage() {
   const [template, setTemplate] = useState(null);
@@ -116,7 +118,8 @@ export default function TemplatePage() {
           </div>
         </div>
       ) : (
-        <p>Loading template...</p>
+            <ProgressSpinner style={{width: '50px', height: '50px'}} />
+        
       )}
       <Toast ref={toast} position="bottom-right" />
     </div>

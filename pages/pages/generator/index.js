@@ -86,7 +86,7 @@ const AddParameters = () => {
     console.log(payload);
 
     // Send the POST request using Axios
-    axios
+    
     axios.post("http://localhost:8082/addtemplate", payload, {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -99,9 +99,20 @@ const AddParameters = () => {
         setTemplate({ code: "" }); // Clear the inputs
         setParameters([]);
         clearFile();
+        toast.current.show({
+          severity: "success",
+          detail: "Template saved successfully",
+          life: 3000, // Display the toast for 3 seconds
+        });
       })
       .catch((error) => {
         console.error(error);
+        toast.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: "Failed to save the template",
+          life: 3000, // Display the toast for 3 seconds
+        });
         // Handle the error
       });
   };

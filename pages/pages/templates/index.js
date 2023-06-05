@@ -68,7 +68,7 @@ const Templates = () => {
     return (
       <>
         <span className='p-column-title'>Name</span>
-        {rowData.name}
+        {rowData.code}
       </>
     );
   };
@@ -76,8 +76,8 @@ const Templates = () => {
   const typeBodyTemplate = (rowData) => {
     return (
       <>
-        <span className='p-column-title'>Type</span>
-        {rowData.type}
+        <span className='p-column-title'>Description</span>
+        {rowData.description}
       </>
     );
   };
@@ -159,7 +159,7 @@ const Templates = () => {
               body={nameBodyTemplate}
               headerStyle={{ minWidth: "5rem" }}
             ></Column>
-            <Column field='type' header='Type' body={typeBodyTemplate}></Column>
+            <Column field='description' header='Description' body={typeBodyTemplate}></Column>
             <Column
               field='path'
               header='Path'
