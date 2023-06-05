@@ -110,12 +110,15 @@ export default function TemplatePage() {
               </li>
             ))}
           </ul>
-          <div>
-            <Button label="Generate" onClick={generateTemplate} disabled={!templateCode} />
-            {generatedDocument && (
-              <Button label="Download" onClick={downloadDocument} />
-            )}
-          </div>
+          <div style={{ display: 'flex', gap: '10px' }}>
+    <Button label="Generate" onClick={generateTemplate} disabled={!templateCode} />
+  {generatedDocument && (
+     <>
+     <Button label="Download" onClick={downloadDocument} />
+     <Button label="Archive Document"  />
+   </>
+  )}
+</div>
         </div>
       ) : (
             <ProgressSpinner style={{width: '50px', height: '50px'}} />
