@@ -16,9 +16,7 @@ const AddParameters = () => {
   const [editDialogVisible, setEditDialogVisible] = useState(false); // state for showing/hiding the dialog
   const [formData, setFormData] = useState({}); // state for storing form data in the dialog
   const [template, setTemplate] = useState({
-    templateName: "",
-    type: "",
-    path: "",
+    code: ""
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const fileUploadRef = useRef(null);
@@ -52,56 +50,53 @@ const AddParameters = () => {
     return (
       <div className='my-2'>
         <InputText
-          value={template.templateName}
-          id='templateName'
+          value={template.code}
+          id='code'
           className='mr-2'
           placeholder='Template Name'
-          name='templateName'
+          name='code'
           onChange={handleChange}
         />
-        <Dropdown
-          value={template.type}
-          options={templateType}
-          optionLabel='name'
-          name='type'
-          placeholder='Select a Type'
-          className='w-full md:w-14rem'
-          onChange={handleChange}
-        />
+       
       </div>
     );
   };
-  const templateType = [{ name: "YARG" }, { name: "Jasper" }];
 
   const handleSave = async () => {
     fileUploadRef.current.upload();
   };
 
   const uploadFile = (file) => {
-    const Params = { params: parameters };
+    const Params = { templateParam: parameters };
     const template1 = {
       ...template,
-      path: file.name,
-      type: template.type.name,
+      description: "zahra test",
+
+
     };
+    console.log(template1);
+    console.log("------------------------")
     const data = Object.assign({}, template1, Params);
+    console.log("this is my data ", data);
 
     const payload = new FormData();
     payload.append("data", JSON.stringify(data));
     payload.append("file", file);
+    console.log("#################");
+    console.log(payload);
 
     // Send the POST request using Axios
     axios
-      .post("http://localhost:8082/addtemplate", payload, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+    axios.post("http://localhost:8082/addtemplate", payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
       .then((response) => {
         console.log(response.data);
         // Handle the success response
         setFormData({}); // Reset the form data
-        setTemplate({ templateName: "", type: "", path: "" }); // Clear the inputs
+        setTemplate({ code: "" }); // Clear the inputs
         setParameters([]);
         clearFile();
       })

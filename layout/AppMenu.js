@@ -27,11 +27,7 @@ const AppMenu = () => {
           icon: "pi pi-fw pi-pencil",
           to: "/pages/templates",
         },
-        {
-          label: "Document Generator",
-          icon: "pi pi-fw pi-pencil",
-          to: "/pages/documentGeneration",
-        },
+      
         {
           label: "Generator v2",
           icon: "pi pi-fw pi-pencil",

@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import axios from 'axios';
+import { Toast } from 'primereact/toast';
 
 export default function TemplatePage() {
   const [template, setTemplate] = useState(null);
   const [inputValues, setInputValues] = useState({});
   const [generatedDocument, setGeneratedDocument] = useState(null);
   const [templateCode, setTemplateCode] = useState('');
+  const toast = useRef(null);
 
   useEffect(() => {
     const fetchTemplate = async () => {
@@ -53,10 +55,17 @@ export default function TemplatePage() {
         ],
       };
       const response = await axios.post('http://localhost:8082/generate-template', requestBody, {
-        responseType: 'arraybuffer', // Set the responseType to 'arraybuffer' to receive the binary data
+        responseType: 'arraybuffer',
       });
 
-      setGeneratedDocument(response.data); // Store the generated document in state
+      setGeneratedDocument(response.data);
+
+      // Display success toast
+      toast.current.show({
+        severity: 'success',
+        summary: 'Document Generated',
+        detail: 'The document has been generated successfully!',
+      });
     } catch (error) {
       console.error('Error generating template:', error);
     }
@@ -67,7 +76,7 @@ export default function TemplatePage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'generated-document.pdf'; // Specify the file name for download
+    link.download = 'generated-document.pdf';
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -95,7 +104,7 @@ export default function TemplatePage() {
                   value={inputValues[param.name] || ''}
                   onChange={(e) => handleInputChange(param.name, e.target.value)}
                 />
-                <br/>
+                <br />
               </li>
             ))}
           </ul>
@@ -109,6 +118,7 @@ export default function TemplatePage() {
       ) : (
         <p>Loading template...</p>
       )}
+      <Toast ref={toast} position="bottom-right" />
     </div>
   );
 }
