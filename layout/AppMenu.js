@@ -29,7 +29,7 @@ const AppMenu = () => {
         },
       
         {
-          label: "Generator v2",
+          label: "Generator",
           icon: "pi pi-fw pi-pencil",
           to: "/pages/generation",
         },

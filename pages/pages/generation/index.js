@@ -75,6 +75,7 @@ export default function TemplatePage() {
 
   const downloadDocument = () => {
     const blob = new Blob([generatedDocument], { type: 'application/pdf' });
+    console.log(generatedDocument)
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -82,7 +83,24 @@ export default function TemplatePage() {
     link.click();
     URL.revokeObjectURL(url);
   };
-
+  const archiveDocument = () => {
+    const formData = new FormData();
+    formData.append('fileData', generatedDocument);
+    formData.append('name','learning.pdf'); // Assuming 'name' is the name of the document
+    formData.append('relativePath',"/myFolder" ); // Assuming 'relativePath' is the relative path of the document
+  
+    axios
+      .post('/api/upload', formData)
+      .then(response => {
+        console.log('Document archived successfully:', response.data);
+        // Add any additional logic you need here
+      })
+      .catch(error => {
+        console.error('Failed to archive document:', error);
+        // Add any error handling logic here
+      });
+  };
+  
   return (
     <div>
       <h1>Template Details</h1>
@@ -124,7 +142,7 @@ export default function TemplatePage() {
             <ProgressSpinner style={{width: '50px', height: '50px'}} />
         
       )}
-      <Toast ref={toast} position="bottom-right" />
+      <Toast ref={toast} position="bottom-right" onClick={archiveDocument} />
     </div>
   );
 }
